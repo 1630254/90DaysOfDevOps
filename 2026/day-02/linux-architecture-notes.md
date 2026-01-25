@@ -5,7 +5,7 @@
 - Linux is a free, open-source OS inspired by Unix.
 - Created by Linus Torvalds; powerful, multi-user, multitasking.
 - Linux distributions bundle kernel, system software, libraries, and apps.
-- Popular Distributions -  Ubuntu, RHEL.CentOS
+- Popular Distributions -  Ubuntu, RHEL,CentOS, Linux Mint etc.
 - Known for stability, flexibility, and wide use across servers, desktops, and embedded systems.
 
 ---
