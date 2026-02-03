@@ -1,4 +1,4 @@
-# Linux Linux File System Hierarchy & Scenario-Based Practice
+# Linux File System Hierarchy & Scenario-Based Practice
 
 ## Part 1: Linux File System Hierarchy
 
