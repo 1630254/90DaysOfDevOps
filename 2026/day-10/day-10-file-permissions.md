@@ -1,14 +1,14 @@
 # File Permissions & File Operations
 
 ## Files Created
-[list files]
+
 - devops.txt
 - notes.txt
 - script.sh
 
 
 ## Permission Changes
-[before/after for each file]
+
 Before:
 - Permissions for all the files are same i.e. 664
 
@@ -176,3 +176,4 @@ echo "Writing data with echo" > devops.txt
 - Testing showed how permission changes directly affect what actions are allowed (e.g., denied write or execute).
 
   **Key takeaway:** Permissions are central to Linux security and collaboration—knowing how to read and modify them ensures proper control over files and directories
+---
