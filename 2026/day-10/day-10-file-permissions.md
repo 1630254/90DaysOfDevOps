@@ -96,7 +96,7 @@ total 8
 - devops.txt → `owner`= rw (6), `group`= rw (6), `other`= r (4)
 
 Answer: Permissions for all the files are same i.e. 664.
-- `Ownwer` & `Group` only have read/write permission, no permissions for `other`.
+- `Ownwer` & `Group` only have read/write permission, read permissions for `other`.
 
 
 ### Task 4: Modify Permissions
