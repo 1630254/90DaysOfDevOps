@@ -234,7 +234,7 @@ Connection: keep-alive
 ETag: "6987250b-267"
 Accept-Ranges: bytes
 ```
-- - Observation: If reachable, we’ll see Connection succeeded or an HTTP status code (e.g., 200 OK).
+- Observation: If reachable, we’ll see Connection succeeded or an HTTP status code (e.g., 200 OK).
 
 ### Step 3: Interpret Result
 - **Reachable:** Service is running and responding.
