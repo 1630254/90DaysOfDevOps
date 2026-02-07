@@ -52,7 +52,7 @@ ps aux | grep <service>
 **In Practice:**
 - If  `systemctl status` says active, and  `journalctl` shows no recent errors, the service is healthy.
 - If logs show repeated failures or the process is missing in `ps`, we’ve got a problem to dig deeper into.
-
+---
 
 ## Safely change ownership and permissions
 
