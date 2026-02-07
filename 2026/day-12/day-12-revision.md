@@ -2,7 +2,7 @@
 
 ## Time saving commands
 
-1. `ssh -i <kry.pem> user@host`
+1. `ssh -i <key.pem> user@host`
 - **Why it saves time:**
 Remote access to servers.
 - **Time-saver use case:** Central command for troubleshooting across environments.
@@ -53,7 +53,9 @@ ps aux | grep <service>
 - If  `systemctl status` says active, and  `journalctl` shows no recent errors, the service is healthy.
 - If logs show repeated failures or the process is missing in `ps`, we’ve got a problem to dig deeper into.
 
+
 ## Safely change ownership and permissions
+
 ### Principles for Safety
 - **Check current state first:** Use `ls -l` to see existing ownership/permissions.
 - **Change ownership before permissions:** Ensure the right user/group owns the file, then adjust access.
