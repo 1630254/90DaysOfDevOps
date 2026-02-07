@@ -68,7 +68,7 @@ Group
 - Example: `ubuntu` → the group also has  (read-only).
 - Groups are useful when multiple users need similar access to files without giving everyone full ownership.
 - Group membership can be managed with 
-
+---
 ### Task 2: Basic chown Operations 
 
 1. Create file `devops-file.txt`
@@ -101,7 +101,7 @@ sudo chown tokyo devops-file.txt
 ls -l devops-file.txt 
 -rw-rw-r-- 1 tokyo ubuntu 0 Feb  6 15:49 devops-file.txt
 ```
-
+---
 ### Task 3: Basic chgrp Operations
 1. Create file `team-notes.txt`
     ```bash
@@ -125,6 +125,7 @@ ls -l devops-file.txt
     ls -l team-notes.txt 
     -rw-rw-r-- 1 ubuntu heist-team 0 Feb  6 16:03 team-notes.txt
     ```
+---
 ### Task 4: Combined Owner & Group Change
 
 Using `chown` you can change both owner and group together:
@@ -145,6 +146,7 @@ Using `chown` you can change both owner and group together:
     ```bash
     sudo chown berlin:heist-team app-logs/
     ```
+---
 ### Task 5: Recursive Ownership
 
 1. Create directory structure:
@@ -191,7 +193,7 @@ Using `chown` you can change both owner and group together:
     total 0
     -rw-rw-r-- 1 professor planners 0 Feb  6 16:23 gold.txt
     ```
-
+---
 ### Task 6: Practice Challenge
 
 1. Create users: `tokyo`, `berlin`, `nairobi` (if not already created)
@@ -241,6 +243,7 @@ total 0
 -rw-rw-r-- 1 berlin  tech-team  0 Feb  6 16:41 blueprints.pdf
 -rw-rw-r-- 1 nairobi vault-team 0 Feb  6 16:41 escape-plan.txt
 ```
+---
 ## What I Learned
 
 **1. Ownership vs. Group Permissions**
@@ -260,3 +263,4 @@ total 0
 - Using `chown -R owner:group directory/` applies ownership changes to all **files and subdirectories** inside.
     - Example: `sudo chown -R professor:planners heist-project/` → every file and folder under `heist-project` is updated.
 - **Key Insight:** Recursive changes are powerful for managing large project structures, ensuring consistent access control across teams.
+---
