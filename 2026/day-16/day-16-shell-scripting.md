@@ -200,3 +200,19 @@ Do you want to check the status? (y/n)y
 inactive (dead)
 ```
 ---
+## What I learned
+
+1. **Script Basics & Shebang Importance**  
+   - Start scripts with `#!/bin/bash` for predictable execution.  
+   - Without a shebang, behavior depends on how the script is invoked and the system’s default shell.  
+
+2. **Working with Variables & User Input**  
+   - Use variables (`NAME`, `ROLE`) to store values and print them with `echo`.  
+   - Double quotes expand variables, while single quotes print text literally.  
+   - `read` enables interactive input, making scripts dynamic and user‑friendly.  
+
+3. **Conditional Logic & Service Checks**  
+   - `if‑else` statements handle numeric comparisons and file existence checks.  
+   - Combine variables, user input, and conditions to build practical scripts like `server_check.sh` for monitoring service status.  
+
+---
