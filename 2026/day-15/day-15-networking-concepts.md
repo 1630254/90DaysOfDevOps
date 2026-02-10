@@ -23,7 +23,7 @@
 
 
 **3. Run: `dig google.com` — identify the A record and TTL from the output**
-    ```bash
+
     dig google.com
 
     ; <<>> DiG 9.18.28 <<>> google.com
@@ -44,7 +44,7 @@
     ;; SERVER: 127.0.0.53#53(127.0.0.53) (UDP)
     ;; WHEN: Tue Feb 10 08:44:43 IST 2026
     ;; MSG SIZE  rcvd: 55
-    ```
+
 - **A record** - `142.250.183.174`
 - **TTL** - `298 ms`
 
@@ -85,6 +85,7 @@ The Internet Assigned Numbers Authority (IANA) reserves specific ranges for priv
 - `192.168.0.0` – `192.168.255.255` (192.168.x.x)  
 
 These ranges are **not routable on the public internet** and are only used inside private networks.
+
 ---
 4. Run: `ip addr show` — identify which of your IPs are private
 ```bash
