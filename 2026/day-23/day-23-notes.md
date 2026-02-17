@@ -229,7 +229,7 @@ origin	https://github.com/1630254/devops-git-practice.git (push)
 git push origin master
 Username for 'https://github.com':
 ```
-> to make this repo. passwordless we have used public ssh certificate and set origin with ssh-url.  
+> to make this repo. passwordless we have used public ssh certificate and reset origin with ssh-url.  
 
 ```bash
 git remote -v                                                                          
@@ -264,7 +264,7 @@ To github.com:1630254/devops-git-practice.git
 
 4. Push `feature-1` branch to GitHub
 ```bash
-it push origin feature-1
+git push origin feature-1
 Enumerating objects: 5, done.
 Counting objects: 100% (5/5), done.
 Delta compression using up to 4 threads
