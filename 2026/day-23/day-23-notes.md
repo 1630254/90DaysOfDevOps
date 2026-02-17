@@ -352,8 +352,8 @@ cat git-commands.md
 
 | Command      | What It Does | Effect on Local Branch | Example |
 |--------------|--------------|------------------------|---------|
-| **git fetch** | Downloads commits, branches, and files from the remote repository into your local repository. | Does **not** change your working directory or current branch. Updates only the remote-tracking branches (e.g., `origin/main`). | `git fetch origin` |
-| **git pull**  | Fetches changes from the remote repository **and immediately merges** them into your current branch. | Updates your working directory and current branch with remote changes. Equivalent to `git fetch` + `git merge`. | `git pull origin main` |
+| **git fetch** | Downloads commits, branches, and files from the remote repository into your local repository. | Does **not** change our working directory or current branch. Updates only the remote-tracking branches (e.g., `origin/main`). | `git fetch origin` |
+| **git pull**  | Fetches changes from the remote repository **and immediately merges** them into your current branch. | Updates our working directory and current branch with remote changes. Equivalent to `git fetch` + `git merge`. | `git pull origin main` |
 
 *Quick Summary:*
 - `git fetch` → Safe way to see what’s new on the remote before merging.
@@ -424,21 +424,93 @@ drwxrwxr-x 25 ubuntu ubuntu  4096 Feb 16 23:42 2026
 -rw-rw-r--  1 ubuntu ubuntu 12779 Feb 16 23:42 TOC.md
 drwxrwxr-x  2 ubuntu ubuntu  4096 Feb 16 23:42 scripts
 ```
+---
 3. Answer in your notes:
-   - What is the difference between clone and fork?
+   - **What is the difference between clone and fork?**
    
-   **Clone** → Copy a repository from GitHub (or any remote) to your own computer.  
-  Example:  
-  ```bash
-  git clone https://github.com/original-owner/project.git
-  ```
-  👉 You now have a local copy to work on.	
+   **Clone** → Copy a repository from GitHub (or any remote) to our own computer.  
+    Example:  
+    ```bash
+    git clone  https://github.com/original-owner/project.git
+    ```
+    We now have a local copy to work on.	
     
-    **Fork** → Make your own copy of someone else’s repository on GitHub itself (online).
-👉 It’s like saying: “I want my own version of this project on my GitHub account.”
+    
+    **Fork** → Make our own copy of someone else’s repository on GitHub itself (online).
+    
+    It’s like saying: “I want my own version of this project on my GitHub account.”
 
 
-   - When would you clone vs fork?
-   - After forking, how do you keep your fork in sync with the original repo?
+   - **When would you clone vs fork?**
+
+   **Clone** → Used when we just want to download a repo to our computer and work on it (maybe for learning or contributing).
+ 	
+    **Fork** → Used when we want to make changes and possibly share them back with the original project. Forking gives us our own copy online, so we can push changes to it.
+
+    *Simple rule:*
+    -   Clone = copy to your computer.
+    -   Fork = copy to your GitHub account.
+
+   - **After forking, how do you keep your fork in sync with the original repo?**
+
+   1. Add the original repo as a remote called `upstream`:
+     ```bash
+    git remote add upstream https://github.com/TrainWithShubham/90DaysOfDevOps.git
+    ```
+    2. Fetch the latest changes from the original repo:
+    ```bash
+    git fetch upstream
+    ```
+    ```bash
+    git fetch upstream
+    remote: Enumerating objects: 40, done.
+    remote: Counting objects: 100% (16/16), done.
+    remote: Total 40 (delta 16), reused 16 (delta 16), pack-reused 24 (from 1)
+    Unpacking objects: 100% (40/40), 5.18 KiB | 589.00 KiB/s, done.
+    From https://github.com/TrainWithShubham/90DaysOfDevOps
+    * [new branch]      LondheShubham153-patch-1     -> upstream/LondheShubham153-patch-1
+    * [new branch]      LondheShubham153-patch-2     -> upstream/LondheShubham153-patch-2
+    * [new branch]      LondheShubham153-patch-3     -> upstream/LondheShubham153-patch-3
+    * [new branch]      LondheShubham153-patch-4     -> upstream/LondheShubham153-patch-4
+    * [new branch]      LondheShubham153-patch-5     -> upstream/LondheShubham153-patch-5
+    * [new branch]      LondheShubham153-patch-6     -> upstream/LondheShubham153-patch-6
+    * [new branch]      LondheShubham153-patch-7     -> upstream/LondheShubham153-patch-7
+    * [new branch]      LondheShubham153-patch-8     -> upstream/LondheShubham153-patch-8
+    * [new branch]      day-31                       -> upstream/day-31
+    * [new branch]      day15                        -> upstream/day15
+    * [new branch]      day21                        -> upstream/day21
+    * [new branch]      day24                        -> upstream/day24
+    * [new branch]      demo-batch-7                 -> upstream/demo-batch-7
+    * [new branch]      feat-day-40                  -> upstream/feat-day-40
+    * [new branch]      feat-day56                   -> upstream/feat-day56
+    * [new branch]      feat-grafana                 -> upstream/feat-grafana
+    * [new branch]      feat-projects                -> upstream/feat-projects
+    * [new branch]      feat-terraform               -> upstream/feat-terraform
+    * [new branch]      feat/2026                    -> upstream/feat/2026
+    * [new branch]      feat/day-14                  -> upstream/feat/day-14
+    * [new branch]      feat/day-27                  -> upstream/feat/day-27
+    * [new branch]      feat/day10                   -> upstream/feat/day10
+    * [new branch]      feat/day4                    -> upstream/feat/day4
+    * [new branch]      feat/day5                    -> upstream/feat/day5
+    * [new branch]      feat/day7                    -> upstream/feat/day7
+    * [new branch]      feat/two_digit_dates_folders -> upstream/feat/two_digit_dates_folders
+    * [new branch]      git-challenge                -> upstream/git-challenge
+    * [new branch]      master                       -> upstream/master
+    * [new branch]      networking                   -> upstream/networking
+    * [new branch]      revert-44-feat/day7          -> upstream/revert-44-feat/day7
+    ```
+
+    3. Merge those changes into your fork’s branch (usually `main`):
+    ```bash
+    git checkout main
+    git merge upstream/master
+    Already up to date.
+
+    ```
+    
+    This way, our fork stays updated with whatever new commits the original project gets.
+
+
+
 
 ---
