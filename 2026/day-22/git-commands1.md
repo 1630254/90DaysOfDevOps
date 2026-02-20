@@ -43,7 +43,7 @@
 
 ## Branching (branch, checkout, switch)
 
-- `git branch <branch_name>` → Creates a **new branch** but does not switch to it.
+- `git branch <branch_name>` → **Creates** a new branch but does not switch to it.
 
      *Example*: `git branch feature-1` → creates `feature-1` branch.
 
@@ -53,7 +53,7 @@
      *Example*: `git checkout feature-1` → switches to `feature-1` branch
 
 
-- `git checkout -b <branch_name>` → Creates a **new branch and switches** to it immediately.
+- `git checkout -b <branch_name>` → **Creates** a new branch and **switches** to it immediately.
 
      *Example*: `git checkout -b feature-2` → creates an switches to new branch `feature-2`.
 
@@ -98,7 +98,7 @@
 
 - `git clone https://github.com/TrainWithShubham/python-for-devops.git`
 
-- `git merge upstream/main` → **Merges** the changes from the original repo’s `main` branch into your local `main`.
+- `git merge upstream/main` → **Merges** the changes from the **original** repo’s `main` branch into your local `main`.
 
      *Example:* `git merge upstream/master`
 
@@ -123,19 +123,19 @@
 
     *Example:* `git stash` - "Saved working directory and index state WIP"
 
-- `git stash pop` → **Restores** the most recent stash and removes it from the stash list
+- `git stash pop` → **Restores** the most **recent stash** and removes it from the stash list
 
     *Example:* `git stash pop` → "reapplies saved changes"
 
-- `git stash list` → Shows all stashed **changes with identifiers**
+- `git stash list` → Shows all **stashed changes** with identifiers
 
     *Example:* `stash@{0}: On feature-login: New update Login-2`
 
-- `git stash apply <stash_id>` → Reapplies a specific stash by its ID **without removing** it from the list 
+- `git stash apply <stash_id>` → **Reapplies** a specific stash by its ID **without removing** it from the list 
 
     *Example:* `git stash apply stash@{0}` → Reapplies a `stash@{0}` by its ID without removing from list.
 
-- `git cherry-pick <commit_hash>` → Applies the changes from a **specific commit** onto current branch.
+- `git cherry-pick <commit_hash>` → **Applies** the changes from a **specific commit** onto current branch.
 
     *Example:* `git cherry-pick e792f4a` → Applies `e792f4a` from a specific commit onto current branch.
 
