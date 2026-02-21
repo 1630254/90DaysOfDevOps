@@ -164,7 +164,7 @@ gh repo view 1630254/my-test-repo --json name,description,visibility
 ```
 4. List all your repositories
 ```bash
-h repo list
+gh repo list
 
 Showing 4 of 4 repositories in @1630254
 
@@ -204,7 +204,7 @@ gh repo delete 1630254/my-test-repo
 ### Task 3: Issues
 1. Create an issue on one of your repos from the terminal — give it a title, body, and a label
 ```bash
-it remote -v
+git remote -v
 origin	git@github.com:1630254/my-test-repo.git (fetch)
 origin	git@github.com:1630254/my-test-repo.git (push)
 [student@fedora]~/my-test-repo% gh repo create my-test-repo --public --source=. --remote=origin --push
