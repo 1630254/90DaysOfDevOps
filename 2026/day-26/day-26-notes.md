@@ -279,3 +279,95 @@ gh issue close #1 --comment "Bug fixed done for the open issue #1"
     Because `gh` supports JSON output (`--json`), you can pipe results into tools like `jq` for structured automation.
 
 ---
+
+### Task 4: Pull Requests
+1. Create a branch, make a change, push it, and create a **pull request** entirely from the terminal
+```bash
+git checkout -b feature-branch
+Switched to a new branch 'feature-branch'
+[student@fedora]~/my-test-repo% echo "New line added from feature-branch" >> README.md
+[student@fedora]~/my-test-repo% git add README.md 
+[student@fedora]~/my-test-repo% git commit -m "Add new line in README"
+[feature-branch 5931465] Add new line in README
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[student@fedora]~/my-test-repo% git push -u origin feature-branch
+Enumerating objects: 5, done.
+Counting objects: 100% (5/5), done.
+Writing objects: 100% (3/3), 310 bytes | 28.00 KiB/s, done.
+Total 3 (delta 0), reused 0 (delta 0), pack-reused 0 (from 0)
+remote: 
+remote: Create a pull request for 'feature-branch' on GitHub by visiting:
+remote:      https://github.com/1630254/my-test-repo/pull/new/feature-branch
+remote: 
+To github.com:1630254/my-test-repo.git
+ * [new branch]      feature-branch -> feature-branch
+branch 'feature-branch' set up to track 'origin/feature-branch'.
+[student@fedora]~/my-test-repo% gh pr create --title "Update README" --body "Added a new line for testing"
+
+Creating pull request for feature-branch into main in 1630254/my-test-repo
+
+https://github.com/1630254/my-test-repo/pull/1
+```
+2. List all open PRs on a repo
+```bash
+gh pr list
+
+Showing 1 of 1 open pull request in 1630254/my-test-repo
+
+ID  TITLE          BRANCH          CREATED AT        
+#1  Update README  feature-branch  about 1 minute ago
+```
+3. View the details of your PR — check its status, reviewers, and checks
+```bash
+gh pr view feature-branch --web
+Opening https://github.com/1630254/my-test-repo/pull/1 in your browser.
+```
+4. Merge your PR from the terminal
+```bash
+gh pr merge feature-branch
+Merging pull request 1630254/my-test-repo#1 (Update README)
+? What merge method would you like to use? Create a merge commit
+? Delete the branch locally and on GitHub? No
+? What's next? Submit
+✓ Merged pull request 1630254/my-test-repo#1 (Update README)
+```
+5. Answer in your notes:
+   - What merge methods does `gh pr merge` support?
+
+   Merge methods supported by `gh pr merge`
+
+    **Merge commit** → preserves full history
+
+    **Squash merge** → combines all commits into one
+
+    **Rebase merge** → replays commits on top of the base branch
+
+    We can specify explicitly:
+    
+    ```bash
+    gh pr merge feature-branch --merge   # merge commit
+    gh pr merge feature-branch --squash  # squash merge
+    gh pr merge feature-branch --rebase  # rebase merge
+    ```
+   
+   - How would you review someone else's PR using `gh`?
+
+   View the PR:
+   ```bash
+   gh pr view <PR-number>
+    ```
+    
+   Check out the PR locally:
+   ```bash
+    gh pr checkout <PR-number>
+   ```
+    Add our review:
+    ```bash
+    gh pr review <PR-number> --approve        # approve
+    gh pr review <PR-number> --request-changes --body "Please fix XYZ"
+    gh pr review <PR-number> --comment --body "Looks good, but consider..."
+    ```
+
+---
+
+
