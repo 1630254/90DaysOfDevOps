@@ -151,7 +151,6 @@ Answer these from memory (no Googling). Then verify your answers:
     lvextend -L +5G /dev/myvg/myvolume
     ```
 ---
----
 
 ### Task 4: Organize Your Work
 1. Make sure all your daily submissions (day-1 through day-27) are committed and pushed
