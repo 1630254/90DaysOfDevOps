@@ -103,4 +103,8 @@ For **every repo**, make sure you have:
      2. 	📝 Published a well‑structured Profile README, enabling visitors to quickly understand who I am and the purpose behind my work.
      3. 	🧹 Cleaned up empty, abandoned, or irrelevant repositories, retaining only meaningful and well‑maintained projects that effectively showcase my learnings, technical expertise, and growth journey.”
 
+
+
+**GitHub Profile:** https://github.com/1630254
+
 ---
