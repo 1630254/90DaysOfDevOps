@@ -1,4 +1,6 @@
 
+# Revision Day: Everything from Day 1 to Day 27
+
 ### Task 1: Self-Assessment Checklist
 Go through the checklist below. For each item, mark yourself honestly:
 - **Can do confidently**
@@ -167,7 +169,7 @@ Examples:
 - Explain Git branching to a non-developer
 
     Git branching creates a safe copy of our project so we can experiment without breaking the main version. The main branch holds the official version we all trust. When we create a branch, we work in our own sandbox — we add features, fix issues, or try new ideas. Once we finish our changes, we merge them back into the main branch. If our experiment fails, we delete the branch and keep the main project clean. This approach lets us work on different tasks at the same time without interfering with each other.
-    
+
 - Explain file permissions to a new Linux user
 - Explain what a crontab is and why sysadmins use it
 
