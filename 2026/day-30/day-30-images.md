@@ -24,7 +24,7 @@
     ![docker_images](./images/task-1/Screenshot%20from%202026-02-25%2005-21-32.png)
 
 3. Compare `ubuntu` vs `alpine` — why is one much smaller?
-    - 	Ubuntu (~38MB):
+    - 	Ubuntu (~32MB):
         - 	Full-featured Linux distribution.
         - 	Includes many utilities, libraries, and packages by default.
         -   Easier for compatibility but heavier.
@@ -51,7 +51,6 @@
         `alpine@sha256:25109184c71bdad752c8312a8623239686a9a2071e8825f20acb8f2198c3f659`
 -   **Created:**
         `2026-01-28T01:18:04.977843834Z`
-**
 -   **Config:**
     -   Environment: `PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin`
     -   Default command: `["/bin/sh"]`
