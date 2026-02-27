@@ -56,6 +56,7 @@ Build and run it. Understand what each line does.
 3. Build and tag it `my-website:v1`
 4. Run it with port mapping and access it in your browser
 
+
 ---
 
 ### Task 5: .dockerignore
