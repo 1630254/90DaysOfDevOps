@@ -10,10 +10,11 @@ const http = require('http');
 
 const server = http.createServer((req, res) => {
   res.writeHead(200, { 'Content-Type': 'text/plain' });
-  res.end('Hello from a very heavy image!\n');
+  res.end('Hello World!\n');
 });
 
-server.listen(3000, () => {
+// Bind to 0.0.0.0 so Docker can expose it
+server.listen(3000, '0.0.0.0', () => {
   console.log('Server running on port 3000');
 });
 ```
