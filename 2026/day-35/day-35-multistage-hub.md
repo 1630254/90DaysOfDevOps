@@ -20,8 +20,6 @@ server.listen(3000, '0.0.0.0', () => {
 ```
 ![](./images/task-1/1.png)
 
-> **Note:** If connectivity issues persist, establish a new bridge network and link the containers through it.
-
 2. Create a Dockerfile that builds and runs it in a **single stage**
 ```bash
 vi Dockerfile
@@ -50,6 +48,8 @@ sudo docker build -t heavy-node-app .
 sudo docker images heavy-node-app
 ```
 ![](./images/task-1/3.png)
+
+> **Note:** If connectivity issues persist, establish a new bridge network and link the containers through it.
 
 Note down the size — you'll compare it later.
 
