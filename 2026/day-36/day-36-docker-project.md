@@ -75,7 +75,7 @@ sudo docker ps
 ```
 ![](./images/task-2/4.png)
 
-> **Access** applicationfrom Web Browser using: localhost:5000
+> **Access the application from web browser at:** `http://localhost:5000`
 
 ![](./images/task-2/5.png)
 
