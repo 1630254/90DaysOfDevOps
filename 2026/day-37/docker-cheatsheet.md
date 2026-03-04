@@ -1,4 +1,4 @@
-# The One-Line Docker Cheat Sheet (Fedora/SRE Optimized)
+# The One-Line Docker Cheat Sheet
 
 ## 1. Container Commands (Running Processes)
 | Action | Command | Example |
