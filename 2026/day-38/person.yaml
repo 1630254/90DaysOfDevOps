@@ -1,0 +1,13 @@
+---
+- name: Manas
+  role: SRE
+  experience_years: "15years"
+  learning: true
+  tools:
+    - linux
+    - python
+    - shell scripting
+    - git
+    - docker
+  hobbies: ["reading","writing","walking","riding motorcycle"]
+

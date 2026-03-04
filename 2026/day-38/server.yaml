@@ -1,0 +1,22 @@
+---
+- server:
+     name: "abc"
+     ip: "192.168.0.107"
+     port: 1024
+     startup_script1: |
+          #!/bin/bash
+          echo "Starting server..."
+          systemctl start nginx
+          echo "Server started successfully"
+     startup_script2: >
+          #!/bin/bash
+          echo "Starting server..."
+          systemctl start nginx
+          echo "Server started successfully"
+
+- database:
+     host: "database"
+     name: "xyz"
+     credentials:
+         user: "user1"
+         password: "nopass"
