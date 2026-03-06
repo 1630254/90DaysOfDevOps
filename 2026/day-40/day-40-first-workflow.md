@@ -196,4 +196,48 @@ git push origin main
 
 Write in your notes: What does a failed pipeline look like? How do you read the error?
 
+In our case, the failure appeared as a **Red "X"** in the GitHub Actions tab. Because of specific typos in our code, the pipeline manifested the failure in three ways:
+
+**🔴 The "Broken" Step**
+- In the job view, the step titled **Print the branch/tag name** was highlighted in red.
+- Cause: a typo (`ruun` instead of `run`).
+
+**⚪ The "Skipped" Steps**
+- All subsequent steps, like **List all files in the workspace** and **Print OS name**, were greyed out with a "skipped" icon.
+- They never executed because the pipeline stopped at the first error.
+
+**⚠️ Indentation Errors**
+- When indentation was wrong on the final step, GitHub sometimes wouldn't even start the run.
+- Instead of listing steps, the Actions page showed a **"Workflow file error"** banner at the top.
+
+**How We Read and Resolved the Errors**
+
+We followed a logical flow to identify and fix the three specific "bugs" in our workflow:
+
+**Step 1:** Expanding the Logs
+- Clicked on the failed **greet job**.
+- Expanded the step marked with the red icon.
+
+**Step 2:** Identifying the `Command Not Found` Error
+- Logs showed:  
+  ```bash
+  bash: ruun: command not found
+  ```
+- **Resolution:** Corrected the typo from `runn`  to the GitHub Actions keyword `run`.
+
+**Step 3:** Spotting the Invalid Context
+- 	Attempted to use `${{date}}`.
+- 	Logs showed the variable was empty or unrecognized (not a valid GitHub context).
+- 	**Resolution:** Replaced with the standard Linux shell command:
+    ```bash
+    $(date)
+    ```
+- 	inside the `run`  block.
+
+**Step 4:** Fixing the YAML Structure
+- 	The `run` command for the OS name was indented too far.
+- 	YAML parser couldn't associate the command with its step.
+- 	**Resolution:** Aligned the `run` key vertically with the `name` key to satisfy strict YAML spacing rules.
+
+
 ---
