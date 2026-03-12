@@ -187,7 +187,7 @@ We may encounter the following error if running as root:`"Must not run with sudo
 To resolve this, we can set the following environment variable:
 
 ```bash
-export AGENT_ALLOW_RUNASROOT="1"
+export RUNNER_ALLOW_RUNASROOT="1"
 ```
 
 
