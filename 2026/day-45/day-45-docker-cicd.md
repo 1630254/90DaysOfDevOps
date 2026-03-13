@@ -233,7 +233,7 @@ git push origin main
 ```bash
 vi docker-publish.yml 
 git add . 
-git commit -m "<msg>"
+git commit -m "<comment>"
 git push origin main  
 ```
 
