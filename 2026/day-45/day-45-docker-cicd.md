@@ -223,9 +223,12 @@ git push origin main
 2. Run it
 3. Confirm it works
 
+
 ![](./images/task-6/6-1.png)
 
 ![](./images/task-6/6-2.png)
+
+ [docker-publish.yml](./docker-publish.yml)
 
 ```bash
 vi docker-publish.yml 
@@ -247,7 +250,8 @@ git push origin main
 ![](./images/task-6/6-8.png)
 
 
-Write in your notes: What is the full journey from `git push` to a running container?
+
+**Write in your notes: What is the full journey from `git push` to a running container?**
 
 #### The Trigger: Local Machine
 - The journey begins when we execute `git push`.
