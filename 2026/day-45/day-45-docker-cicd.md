@@ -249,6 +249,7 @@ git push origin main
 
 ![](./images/task-6/6-8.png)
 
+![](./images/task-6/6-9.png)
 
 
 **Write in your notes: What is the full journey from `git push` to a running container?**
