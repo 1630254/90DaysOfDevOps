@@ -30,7 +30,9 @@ Multiple workflows can call `reusable-ci.yml`.
 **Benefits**
 
 ✔ DRY (Don't Repeat Yourself)
+
 ✔ Easier maintenance
+
 ✔ Consistent CI/CD pipelines
 
 
