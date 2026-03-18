@@ -758,9 +758,9 @@ Always active
 
 Draw this diagram in your notes. You just built a **DevSecOps pipeline** — security is now part of your automation, not an afterthought.
 
-![](./images/BP/Day-49-1.png)
+![](./images/BP/Day-49-2.png)  
 
-![](./images/BP/Day-49-2.png)
+![](./images/BP/Day-49-1.png)
 
 <div align="center">
   <img src="./images/BP/Day-49-3-2.png" />
