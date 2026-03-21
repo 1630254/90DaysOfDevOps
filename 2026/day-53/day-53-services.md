@@ -279,6 +279,8 @@ kubectl get services
 
 Only the built-in `kubernetes` service in the default namespace should remain.
 
+![](./images/task-7/7-1.png)
+
 **Verify:** Is everything cleaned up?
 
 ✅ Yes, everything looks fully cleaned up.
