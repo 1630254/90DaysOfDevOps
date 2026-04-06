@@ -55,7 +55,7 @@ Ansible relies on standard, existing communication protocols to talk to our infr
    - **Modules** -- units of work Ansible executes (install a package, copy a file, start a service)
    - **Playbooks** -- YAML files that define what to do on which hosts
 
-Here is a brief breakdown of how these components work together in the Ansible architecture:
+👉 Here is a brief breakdown of how these components work together in the Ansible architecture:
 
 - **Control Node:** This is our command center (laptop or jump server). We install Ansible here; it’s the only place where the Ansible software actually needs to reside.
 
