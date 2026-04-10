@@ -1,0 +1,86 @@
+---
+# tasks file for roles/docker
+
+- tags: ["docker"]
+  block:
+    - name: Install Docker dependencies (yum-utils, device-mapper-persistent-data, lvm2)
+      yum:
+        name:
+          - yum-utils
+          - device-mapper-persistent-data
+          - lvm2
+        state: present
+      check_mode: no # Force installation of tools needed for repo management
+
+    - name: Add Docker CE repository
+      yum_repository:
+        name: docker-ce-stable
+        description: Docker CE Stable - $basearch
+        baseurl: https://download.docker.com/linux/centos/$releasever/$basearch/stable
+        gpgcheck: yes
+        gpgkey: https://download.docker.com/linux/centos/gpg
+        enabled: yes
+      check_mode: no # Physically create the .repo file
+
+    - name: Install Docker CE (docker-ce, docker-ce-cli, containerd.io)
+      yum:
+        name:
+          - docker-ce
+          - docker-ce-cli
+          - containerd.io
+        state: present
+      check_mode: no  # Force the actual installation so the service becomes visible
+
+    - name: Start and enable the Docker service
+      service:
+        name: docker
+        state: started
+        enabled: yes
+
+    - name: Add the `deploy` user to the `docker` group
+      user:
+        name: deploy
+        groups: docker
+        append: yes
+
+    - name: Install Docker Compose (direct download)
+      get_url:
+        url: "https://github.com/docker/compose/releases/download/v2.26.1/docker-compose-linux-x86_64"
+        dest: /usr/local/bin/docker-compose
+        mode: '0755'
+
+    - name: Log in to Docker Hub using vault-encrypted credentials
+      community.docker.docker_login:
+        username: "{{ vault_docker_username }}"
+        password: "{{ vault_docker_password }}"
+      become_user: deploy
+      when:
+        - not ansible_check_mode  # <--- Add this line
+        - vault_docker_username is defined
+
+    - name: Pull application image
+      community.docker.docker_image:
+        name: "{{ docker_app_image }}"
+        tag: "{{ docker_app_tag }}"
+        source: pull
+      when: not ansible_check_mode
+
+    - name: Run application container
+      community.docker.docker_container:
+        name: "{{ docker_app_name }}"
+        image: "{{ docker_app_image }}:{{ docker_app_tag }}"
+        state: started
+        restart_policy: always
+        ports:
+          - "{{ docker_app_port }}:{{ docker_container_port }}"
+      when: not ansible_check_mode
+
+    - name: Verify the container is running (Wait for healthy)
+      uri:
+        url: "http://localhost:{{ docker_app_port }}"
+        status_code: 200
+      retries: 5
+      delay: 3
+      register: health_check
+      until: health_check.status == 200
+      when: not ansible_check_mode

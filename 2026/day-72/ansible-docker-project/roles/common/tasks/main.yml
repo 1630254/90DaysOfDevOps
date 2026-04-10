@@ -1,0 +1,39 @@
+---
+# tasks file for roles/common
+- name: Install EPEL repository via direct URL
+  dnf:
+    name: "https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm"
+    state: present
+    disable_gpg_check: yes
+  when: ansible_os_family == 'RedHat'
+  check_mode: no  # Force this task to execute even in --check mode
+
+- name: Update package cache
+  yum:
+    update_cache: true
+  tags: common
+  check_mode: no  # Force this task to execute even in --check mode
+
+- name: Install common packages
+  yum:
+    name: "{{ common_packages }}"
+    state: present
+  tags: common
+
+- name: Set hostname
+  hostname:
+    name: "{{ inventory_hostname }}"
+  tags: common
+
+- name: Set timezone
+  timezone:
+    name: "{{ timezone }}"
+  tags: common
+
+- name: Create deploy user
+  user:
+    name: deploy
+    groups: wheel
+    shell: /bin/bash
+    state: present
+  tags: common
