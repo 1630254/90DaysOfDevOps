@@ -1,0 +1,42 @@
+receivers:
+  otlp:
+    protocols:
+      grpc:
+        endpoint: 0.0.0.0:4317
+      http:
+        endpoint: 0.0.0.0:4318
+  
+  # NEW: This probes the app's root URL instead of /metrics
+  httpcheck:
+    targets:
+      - endpoint: http://notes-app:8000
+        method: GET
+    collection_interval: 15s
+
+processors:
+  batch:
+
+exporters:
+  prometheus:
+    endpoint: "0.0.0.0:8889"
+    # Optional: helps clean up metric names for Prometheus
+    resource_to_telemetry_conversion:
+      enabled: true 
+  debug:
+    verbosity: detailed
+
+service:
+  pipelines:
+    metrics:
+      # We added httpcheck here to generate synthetic health metrics
+      receivers: [otlp, httpcheck]
+      processors: [batch]
+      exporters: [prometheus]
+    traces:
+      receivers: [otlp]
+      processors: [batch]
+      exporters: [debug]
+    logs:
+      receivers: [otlp]
+      processors: [batch]
+      exporters: [debug]
