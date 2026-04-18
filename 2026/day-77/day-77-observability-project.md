@@ -10,12 +10,10 @@ cd observability-for-devops
 ![](./images/task-1/1-1.png)
 
 Examine the project structure:
+
 ```bash
 tree -I 'node_modules|build|staticfiles|__pycache__'
 ```
-![](./images/task-1/1-2.png)
-
-![](./images/task-1/1-3.png)
 
 ```
 observability-for-devops/
@@ -34,6 +32,10 @@ observability-for-devops/
     otel-collector-config.yml           # OTLP receivers, processors, exporters
   notes-app/                            # Sample Django + React application
 ```
+
+![](./images/task-1/1-2.png)
+
+![](./images/task-1/1-3.png)
 
 Launch the entire stack:
 ```bash
