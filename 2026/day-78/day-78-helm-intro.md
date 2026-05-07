@@ -47,18 +47,6 @@ Using Helm allows us to treat our Kubernetes configurations as managed, versione
    - Dependencies: a chart can depend on other charts (your app chart depends on a MySQL chart)
    - Community: thousands of pre-built charts for common software (MySQL, Redis, Prometheus, ArgoCD)
 
-👉 Using Helm instead of raw manifests transforms how we manage the AI-BankApp from a manual, error-prone process into a scalable automation workflow.
-
-**The Key Advantages**
-
-- **Templating vs. Hard-coding:** Instead of managing 12 static YAML files for each environment, we use a single template. We swap environment-specific data (like database URLs or resource limits) using a `values.yaml` file, ensuring consistency across Dev, Staging, and Prod.
-
-- **Versioning & Rollbacks:** Helm keeps a history of every change. If an upgrade fails, we don't have to manually "undo" YAML edits; we simply run `helm rollback` to return to a known stable state.
-
-- **Dependency Management:** Our application doesn't live in a vacuum. Helm allows us to define "sub-charts," so our AI-BankApp can automatically pull and configure its required MySQL or Redis instances as dependencies.
-
-- **The "Lego" Factor (Community):** We don't need to write a MySQL manifest from scratch. We can leverage pre-built, production-hardened charts from the Bitnami or Prometheus communities, saving hours of configuration time.
-
 ---
 
 ### Task 2: Install Helm and Explore the AI-BankApp
