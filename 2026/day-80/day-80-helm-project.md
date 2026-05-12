@@ -53,85 +53,50 @@ Functional:
 
 ```yaml
 bankapp:
-  replicaCount: 4
+  replicaCount: 1
   image:
     repository: trainwithshubham/ai-bankapp-eks
     tag: "latest"
     pullPolicy: Always
   resources:
     requests:
-      memory: "256Mi"
-      cpu: "250m"
-    limits:
       memory: "512Mi"
+      cpu: "200m"
+    limits:
+      memory: "1Gi"
       cpu: "500m"
-  service:
-    type: ClusterIP
-    port: 8080
   autoscaling:
-    enabled: true
-    minReplicas: 2
-    maxReplicas: 4
-    targetCPUUtilization: 70
+    enabled: false
 
-# MySQL configuration
 mysql:
   enabled: true
-  image:
-    repository: mysql
-    tag: "8.0"
   resources:
     requests:
-      memory: "256Mi"
-      cpu: "250m"
-    limits:
       memory: "512Mi"
-      cpu: "500m"
+      cpu: "100m"
+    limits:
+      memory: "1Gi"
+      cpu: "250m"
   persistence:
-    size: 5Gi
-    storageClass: gp3
+    size: 2Gi
+    storageClass: standard
 
-# Ollama AI configuration
 ollama:
   enabled: true
-  image:
-    repository: ollama/ollama
-    tag: "latest"
   model: tinyllama
   resources:
     requests:
-      memory: "2Gi"
-      cpu: "900m"
+      memory: "1Gi"
+      cpu: "500m"
     limits:
-      memory: "2.5Gi"
-      cpu: "1500m"
+      memory: "1.5Gi"
+      cpu: "1000m"
   persistence:
-    size: 10Gi
-    storageClass: gp3
+    size: 5Gi
+    storageClass: standard
 
-# Shared configuration
-config:
-  mysqlDatabase: bankappdb
-  ollamaUrl: ""  # Auto-generated from service name if empty
-
-# Secrets
-secrets:
-  mysqlRootPassword: Test@123
-  mysqlUser: root
-  mysqlPassword: Test@123
-
-# Storage
 storageClass:
-  create: true
-  name: gp3
-  provisioner: ebs.csi.aws.com
-
-# Gateway (optional -- for EKS with Envoy Gateway)
-gateway:
-  enabled: false
-  hostname: ""
-  tls:
-    enabled: false
+  create: false
 ```
 Create `bankapp/values-staging.yaml`:
 ```yaml
