@@ -146,8 +146,8 @@ Update kubeconfig using the Terraform output:
 ```bash
 aws eks update-kubeconfig --name bankapp-eks --region us-west-2
 ```
-![](./images/task-4/4-1.png
-)
+![](./images/task-4/4-1.png)
+
 Verify the connection:
 ```bash
 # Check context
