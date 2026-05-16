@@ -321,7 +321,7 @@ terraform destroy
 
 👉 The NAT Gateway is surprisingly expensive because AWS charges you twice for it:
 
-- 1. **Uptime Fee:** A flat fee of **$0.045 per hour** (~$33/month) per gateway just to keep it running. A standard high-availability setup uses 3 gateways across different zones, costing **~$100/month** before any data even moves.
+- 1. **Uptime Fee:** A flat fee of **$0.045 per hour** (\~$33/month) per gateway just to keep it running. A standard high-availability setup uses 3 gateways across different zones, costing **\~$100/month** before any data even moves.
 
 - 2. **Data Processing Fee:** An extra **$0.045 per GB** for all data passing through it. This includes internal traffic like pulling large container images or downloading massive AI model weights (like for `ollama`) from external registries into your private subnets.
 
