@@ -321,8 +321,20 @@ terraform destroy
 
 👉 The NAT Gateway is surprisingly expensive because AWS charges you twice for it:
 
-- 1. **Uptime Fee:** A flat fee of **$0.045 per hour** (\~$33/month) per gateway just to keep it running. A standard high-availability setup uses 3 gateways across different zones, costing **\~$100/month** before any data even moves.
+- 1. **Uptime Fee:** A flat fee of **$0.045 per hour** (\~$33/month) per gateway just to keep it running. A standard high-availability setup uses 2 gateways across different zones, costing **\~$100/month** before any data even moves.
 
-- 2. **Data Processing Fee:** An extra **$0.045 per GB** for all data passing through it. This includes internal traffic like pulling large container images or downloading massive AI model weights (like for `ollama`) from external registries into your private subnets.
+- 2. **Data Processing Fee:** An extra **$0.045 per GB** for all data passing through it. This includes internal traffic like pulling large container images or downloading massive AI model weights (like for `ollama`) from external registries into private subnets.
+
+**EKS cost breakdown table**
+
+| AWS Component Class      | Architecture Core Component                        | Unit Pricing Basis (US-West-2)            | Estimated Daily Cost | Estimated Monthly Cost | Budget Share (%) |
+|--------------------------|----------------------------------------------------|-------------------------------------------|----------------------|------------------------|------------------|
+| ☸️ Cluster Management     | EKS Control Plane / Managed API Server             | $0.10 / hour flat fee                      | $2.40                | $73.00                 | 28.2%            |
+| 🖲️ Compute Nodes          | 3 × t3.medium EC2 Worker Nodes                     | $0.0416 / hour per instance                | $3.00                | $91.10                 | 35.2%            |
+| 🛡️ Secure Networking      | 2 × VPC NAT Gateways (High-Availability runtime)   | $0.045 / hour per gateway                  | $2.16                | $65.70                 | 25.4%            |
+| 🌐 Traffic Routing        | 1 × Application Load Balancer (ALB)                | $0.0225 / hour baseline + LCU usage        | $0.73                | $22.00                 | 8.5%             |
+| 💾 Block Storage          | 90 GB Total gp3 EBS Storage (Node boot + caches)   | $0.08 / GB-month tier allocation           | $0.24                | $7.20                  | 2.7%             |
+| **Total Estimated Budget** | Complete Baseline EKS Footprint                   | Standard On-Demand Matrix                  | ~ $8.53              | ~ $259.00              | 100%             |
+
 
 ---
