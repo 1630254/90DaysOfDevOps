@@ -48,17 +48,18 @@ kubectl apply -f k8s/hpa.yml
 echo "Waiting for BankApp..."
 kubectl wait --for=condition=ready pod -l app=bankapp -n bankapp --timeout=300s
 ```
-> Note:If the BankApp gives timeout error we can patch this immediately to see our pods go green, we can use kubectl expose to generate the service on the fly:
-
-```bash
-kubectl expose deployment ollama --name=ollama-service --port=11434 --target-port=11434 -n bankapp
-```
 
 ![](./images/task-1/1-2.png)
 
 ![](./images/task-1/1-3.png)
 
 ![](./images/task-1/1-4.png)
+
+> **Note:** If the BankApp gives timeout error we can patch this immediately to see our pods go green, we can use kubectl expose to generate the service on the fly:
+
+```bash
+kubectl expose deployment ollama --name=ollama-service --port=11434 --target-port=11434 -n bankapp
+```
 
 Verify everything is running:
 ```bash
