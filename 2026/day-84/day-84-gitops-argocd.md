@@ -371,5 +371,18 @@ ArgoCD will overwrite your change with the value from Git.
 
 **This is the core GitOps promise:** The cluster always matches Git. Manual changes do not survive. All changes must go through Git (pull requests, review, merge).
 
-**Document:** What happened during each self-healing test? How quickly did ArgoCD revert the changes?
+**Document:** 
+
+  **What happened during each self-healing test?**
+
+- **Drift Detection:** When manual changes (configuration drift) were made directly to the cluster—such as patching a Pod or modifying a live resource—ArgoCD identified that the cluster state differed from the "desired state" defined in the Git repository.
+
+- **Automatic Reversion:** Once the drift was detected, ArgoCD's `SelfHeal` policy triggered a synchronization process. It automatically overwrote the manual, unauthorized changes in the cluster, forcing the resources to return to the exact configuration specified in the Git manifest.
+
+**How quickly did ArgoCD revert the changes?**
+
+- **Sync Interval:** ArgoCD typically polls the Git repository every **3 minutes** by default.
+
+- **Total Response Time:** Once drift is detected, the reversion itself is usually near-instantaneous. However, the total time to revert depends on the polling interval and the time required for the synchronization process (which can range from a few seconds for simple metadata changes to several minutes for more complex deployments).
+
 ---
