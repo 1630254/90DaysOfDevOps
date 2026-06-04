@@ -1,0 +1,36 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: envoy-gateway
+  namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  project: default
+  source:
+    repoURL: oci://docker.io/envoyproxy/gateway-helm
+    chart: gateway-helm
+    # Matches your existing manual install version
+    targetRevision: 1.2.6
+    helm:
+      parameters:
+        # Prevents conflict with existing CRDs
+        - name: crds.install
+          value: "false"
+        # These ensure the chart metadata matches your existing manual installation
+        - name: fullnameOverride
+          value: "envoy-gateway"
+        - name: nameOverride
+          value: "gateway-helm"
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: envoy-gateway-system
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      # Allows ArgoCD to merge updates safely
+      - CreateNamespace=true
+      - ServerSideApply=true
+      # Removed 'Replace=true' to prevent Deployment replacement conflicts
