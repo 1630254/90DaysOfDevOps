@@ -185,6 +185,8 @@ Open `http://localhost:8080` and confirm your title change is visible.
 
 **You just completed a full GitOps cycle:** code change -> CI builds image -> updates manifest -> ArgoCD deploys to production. Zero manual intervention.
 
+![](./images/task-3/Gemini_Generated_Image_i7ro2bi7ro2bi7ro.png)
+
 ---
 
 ### Task 4: Test Drift Detection and Recovery
@@ -253,6 +255,27 @@ In the ArgoCD UI, click the application and look at the "Events" tab. Every self
 ![](./images/task-4/4-3-7.png)
 
 **Document:** In each scenario, how long did ArgoCD take to detect and fix the drift? What would happen if `selfHeal` was disabled?
+
+👉 ArgoCD continuously reconciles the state of the cluster with the desired state in Git repository. Because it performs these checks periodically, it does not rely on a fixed, universal speed for detecting drift.
+
+**Detection and Fix Timing:**
+The reconciliation interval determines how quickly ArgoCD detects drift. By default, ArgoCD re-scans the cluster every 120 seconds.
+
+- **Detection:** ArgoCD compares the live cluster resources against Git manifests during each reconciliation loop. It flags the application as `OutOfSync` as soon as it identifies a discrepancy.
+
+- **Correction:** If we enable `selfHeal`, ArgoCD triggers a synchronization process immediately after it detects the drift. The total time to fix the drift equals the time remaining in the current reconciliation loop plus the time required for the Kubernetes API to process the sync update.
+
+**Impact of Disabling `selfHeal`:**
+If we disable `selfHeal`, ArgoCD changes how it handles manual changes:
+
+- **ArgoCD observes but ignores:** ArgoCD still detects the drift and highlights the application as `OutOfSync` in the UI and CLI. However, it refuses to overwrite the manual changes automatically.
+
+- **The cluster maintains the "drifted" state:** The resource remains in its manual state indefinitely.
+
+- **Manual intervention becomes mandatory:** We must manually trigger a sync—via the UI, CLI, or by pushing a new commit to Git—to restore the state defined in your repository.
+
+Disabling `selfHeal` allows teams to perform emergency debugging or temporary scaling without ArgoCD reverting those changes immediately. However, it removes the automated guarantee that cluster strictly matches the configuration in Git.
+
 
 ---
 
@@ -357,5 +380,6 @@ Confirm deletion (type `yes`). This takes 10-15 minutes.
 | 85 | Sync waves, rollbacks, App of Apps, notifications, RBAC |
 | 86 | Full CI/CD pipeline, code-to-production, drift detection, teardown |
 
+![](./images/task-6/Gemini_Generated_Image_mggda8mggda8mggd.png)
 ---
 
